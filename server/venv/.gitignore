@@ -1,0 +1,10 @@
+# created by virtualenv automatically
+.env
+venv/
+profiles
+staff_pic
+db.sqlite3
+.vscode/
+
+node_modules/
+build/
