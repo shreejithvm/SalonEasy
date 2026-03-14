@@ -38,6 +38,9 @@ staff_pic
 node_modules/
 build/
 
+venv/
+server/venv/
+
 # VSCode
 .vscode/
 
