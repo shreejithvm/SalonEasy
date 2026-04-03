@@ -22,7 +22,7 @@ from django.conf.urls.static import static
 from rest_framework.authtoken import views as authview
 from rest_framework.routers import DefaultRouter
 from userApp.views import RegisterView, LoginView
-from adminApp.views import StaffProfileCreateView,StaffProfileView,CreatePaymentView,verify_payment,BookConfView
+from adminApp.views import StaffProfileCreateView,StaffProfileView,CreatePaymentView,verify_payment
 from userApp.views import ForgotPasswordView,ResetPasswordView
 from django.contrib.auth import views as auth_views
 routers=DefaultRouter()
@@ -31,6 +31,7 @@ routers.register('profile',views.ProfileViewSet,basename="profile_view")
 routers.register('staff/orders',views.StaffProfileList,basename="staff_orders")
 routers.register('staffs',views.StaffProfileList,basename="staffs_view")
 routers.register('staffrole',views.StaffRole, basename='staff')
+routers.register('delete/myroder',views.Delete_MyOrder, basename='delete_myorder')
 routers.register('service',views.ServiceViewSet,basename="service_view")
 routers.register('booking',views.BookingViewSet,basename="booking_view")
 routers.register('payment',views.PaymentViewSet,basename="payment_view")
@@ -58,7 +59,9 @@ urlpatterns = [
 
     path("staff/profile/", StaffProfileView.as_view()),
     path("staff/profile/create/", StaffProfileCreateView.as_view()),
+    path('staff-status/<int:id>/', views.update_staff_status),
     path("booked/",views.BookedSlot.as_view()),
+    # path("delete/myroder",views.Delete_MyOrder.as_view),
     path("mybook/",views.BookConfView.as_view()),
     path("create/book/",views.BookingCreateView.as_view()),
     path("create-payment/", CreatePaymentView.as_view()),

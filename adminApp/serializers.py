@@ -51,7 +51,6 @@ class ProfileSerializer(serializers.ModelSerializer):
 class StaffSerializer(serializers.ModelSerializer):
     id=serializers.IntegerField(read_only=True)
     user = UserSerializer(read_only=True)
-    is_active=serializers.BooleanField(read_only=True)
     class Meta:
         model = StaffModel
         fields = ["id","user","specialization","staff_phone","price","staff_profile","is_active",]

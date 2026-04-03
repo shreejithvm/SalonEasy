@@ -106,8 +106,12 @@ class StaffProfileList(viewsets.ModelViewSet):
         serializer=BookingSerializer(bookings,many=True)
         return Response(serializer.data)
     
-      
-
+@api_view(['PATCH'])
+def update_staff_status(request,id):
+        staff=StaffModel.objects.get(id=id)
+        staff.is_active=request.data.get("is_active")
+        staff.save()
+        return Response({"message":"Status updated"})
 
 class StaffRole(viewsets.ModelViewSet):
     queryset = StaffModel.objects.filter(is_active=True)
@@ -140,7 +144,7 @@ class BookingViewSet(viewsets.ModelViewSet):
 
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
-
+  
     @action(detail=False,methods=["GET"],permission_classes=[IsAdminUser])    
     def get_allorders(self,request):
         orders=BookingModel.objects.filter(is_paid=True)
@@ -271,4 +275,16 @@ class BookConfView(APIView):
         bookings=BookingModel.objects.filter(user=request.user,is_paid=True)
         serializer=BookingSerializer(bookings,many=True)
         return Response(serializer.data)
+    
+class Delete_MyOrder(viewsets.ModelViewSet):
+    queryset = BookingModel.objects.all()
+    authentication_classes = [TokenAuthentication]
+    permission_classes = [permissions.IsAuthenticated]
+
+    def delete(self,request,*kwargs):
+        bookings=BookingModel.objects.get(user=request.user,id=kwargs.get("pk"))
+        bookings.delete()
+
+        
+
 
