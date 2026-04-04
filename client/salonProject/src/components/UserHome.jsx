@@ -137,6 +137,95 @@ const services = [
         </div>
       </section>
 
+    <section className="container py-5">
+
+      {/* Heading */}
+      <div className="text-center mb-5">
+        <h2 className="fw-bold display-6">
+          Discover Your Perfect Look
+        </h2>
+        <p className="text-muted">
+          AI-powered styling tailored just for you
+        </p>
+      </div>
+
+      {/* Card */}
+      <div
+        className="rounded-4 shadow-lg overflow-hidden"
+        style={{
+          background: "linear-gradient(135deg, #4facfe, #8e54e9)",
+        }}
+      >
+        <div className="row g-0 align-items-center">
+
+          {/* LEFT */}
+          <div
+            className="col-lg-6 text-white p-5"
+            style={{
+              backdropFilter: "blur(10px)",
+            }}
+          >
+            <h1 className="fw-bold mb-3">
+              AI Face Shape Detector
+            </h1>
+
+            <p className="lead opacity-75">
+              Upload your photo to identify your face shape and get hairstyle
+              recommendations that truly fit you.
+            </p>
+
+            {/* FORM */}
+            <div className="mt-4">
+              <form className="bg-white p-3 rounded-4 shadow-sm">
+
+                <input
+                  type="file"
+                  className="form-control mb-3"
+                />
+
+                <button
+                  className="btn w-100 text-white fw-semibold rounded-pill"
+                  style={{
+                    background: "linear-gradient(135deg, #4facfe, #00f2fe)",
+                    border: "none",
+                  }}
+                >
+                  Upload & Analyze
+                </button>
+              </form>
+            </div>
+          </div>
+
+          {/* RIGHT */}
+          <div className="col-lg-6 position-relative">
+
+            {/* Glow overlay */}
+            <div
+              style={{
+                position: "absolute",
+                top: 0,
+                left: 0,
+                width: "100%",
+                height: "100%",
+                background:
+                  "linear-gradient(to top right, rgba(255,255,255,0.1), transparent)",
+              }}
+            ></div>
+
+            <img
+              src="/images/face-scan.jpg"
+              alt="Face Scan"
+              className="img-fluid w-100 h-100 object-fit-cover"
+            />
+          </div>
+
+        </div>
+      </div>
+
+    </section>
+
+      
+
 
       {/* SERVICES */}
        <section id="services" className="container py-5">
